@@ -2,55 +2,62 @@ import java.util.Scanner;
 import java.lang.Integer;
 
 public class TestSystem {
-    public static final String[] QUESTION = {"Какое животное обитает только в Китае", "Чем питаются колибри", "Как называются молодые рога марала, изюбря и пятнистого оленя"};
-    public static final String[][] ANSWER = {
-            {"Коала", "Верблюд", "Панда"},
-            {"Нектаром и мелкими насекомыми", "Мелкой рыбой", "Семенами трав"},
-            {"Пуанты", "Пенаты", "Панты"}
+    public static final String[] QUESTION = {"Какое животное обитает только в Китае",
+            "Чем питаются колибри",
+            "Как называются молодые рога марала, изюбря и пятнистого оленя",
+            "Какая наука изучает ископаемых животных"
     };
-    public static final int[][] TRUE_ANSWER = {{0, 0, 1}, {1, 0, 0}, {0, 0, 1}};
+    public static final String[][] ANSWER = {
+            {"Коала", "Верблюд", "Панда", "Слон", "Носорог"},
+            {"Нектаром и мелкими насекомыми", "Мелкой рыбой", "Семенами трав", "Лягушками"},
+            {"Пуанты", "Пенаты", "Панты"},
+            {"Сейсмология", "Орнитология", "Психология", "Палеонтология", "Геология", "География"}
+    };
+    public static final int[][] TRUE_ANSWER = {{0, 0, 1, 0, 0}, {1, 0, 0, 0}, {0, 0, 1}, {0, 0, 0, 1, 0, 0}};
 
     public static void main(String[] args) {
-
-        int[][] personAnswer = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+        int[][] personAnswer = {{0, 0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0}, {0, 0, 0, 0, 0, 0}};
         String inputAnswer;
-        int k = 0;
         int cntTrueAnswer = 0;
+        int answerToInt = 0;
         Scanner inputStr = new Scanner(System.in);
-        System.out.println("Здравствуйте.\nВам будет задано три вопроса, на каждый из которых есть три варанта ответа. \n" +
-                "Вам необходимо выбрать только один вариант ответа.\nДля ответа поставьте цифру с номером ответа (1-3).\n");
+        System.out.println("""
+                Здравствуйте.
+                Перед Вами вопросы, на которые есть только один вариант ответа.
+                Чтобы ответить введите цифру соответсвующую номеру выбронного вами ответа и нажмите Enter.
+                """);
         for (int i = 0; i < QUESTION.length; i++) {
-            System.out.println("Вопрос " + (int) (i + 1) + ": " + QUESTION[i] + "?");
-            for (int j = 0; j < ANSWER.length; j++) {
-                System.out.println("  " + (int) (j + 1) + ") " + ANSWER[i][j]);
+            System.out.println("Вопрос " + (i + 1) + ": " + QUESTION[i] + "?");
+            for (int j = 0; j < ANSWER[i].length; j++) {
+                System.out.println("  " + (j + 1) + ") " + ANSWER[i][j]);
             }
             System.out.println("Введите ваш ответ:");
             inputAnswer = inputStr.nextLine();
             boolean trueAns = false;
             while (!trueAns) {
                 try {
-                    Integer answerToInt = Integer.valueOf(inputAnswer);
+                    answerToInt = Integer.parseInt(inputAnswer);
+
                     System.out.println("Ваш ответ: " + answerToInt);
-                    if (answerToInt == 1 || answerToInt == 2 || answerToInt == 3) {
+                    if (answerToInt != 0 && answerToInt <= ANSWER[i].length) {
                         trueAns = true;
-                        k = answerToInt - 1;
+                        personAnswer[i][answerToInt - 1] = 1;
+
                     } else {
-                        System.err.println("Неправильный номер ответа!\nВведите номер ответа 1, 2 или 3");
+                        System.err.println("Ответа с таким номером нет!\nВведите цифту от 1 до " + ANSWER[i].length + ".\nВведите ваш ответ:");
+
                         inputAnswer = inputStr.nextLine();
                     }
                 } catch (NumberFormatException e) {
-                    System.err.println("Неправильный формат ответа!\nВведите числом номер ответа 1, 2 или 3");
+                    System.err.println("К ответу принимаются только цифры!\nВведите цифту от 1 до " + ANSWER[i].length + ".\nВведите ваш ответ:");
                     inputAnswer = inputStr.nextLine();
                 }
-                if (trueAns) {
-                    personAnswer[i][k] = 1;
-                    if (personAnswer[i][k] == TRUE_ANSWER[i][k]) {
-                        System.out.println("Верно!\n");
-                        cntTrueAnswer++;
-                    } else System.out.println("Не верно!\n");
-                }
             }
+            if (personAnswer[i][answerToInt - 1] == TRUE_ANSWER[i][answerToInt - 1]) {
+                System.out.println("Верно!\n");
+                cntTrueAnswer++;
+            } else System.out.println("Не верно!\n");
         }
-        System.out.println("Количество правильных ответов: " + cntTrueAnswer + " из 3");
+        System.out.println("Количество правильных ответов: " + cntTrueAnswer + " из " + QUESTION.length);
     }
 }
