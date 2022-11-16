@@ -1,0 +1,161 @@
+1) olga@Goli-VirtualBox:~$ pwd
+/home/olga
+2) olga@Goli-VirtualBox:~$ ls -la
+итого 84
+drwxr-x--- 16 olga olga 4096 окт 20 01:10  .
+drwxr-xr-x  3 root root 4096 окт  8 21:34  ..
+drwxrwxr-x  2 olga olga 4096 окт 15 01:22  .android
+-rw-------  1 olga olga  935 окт 20 01:11  .bash_history
+-rw-r--r--  1 olga olga  220 окт  8 21:34  .bash_logout
+-rw-r--r--  1 olga olga 3771 окт  8 21:34  .bashrc
+drwx------ 17 olga olga 4096 окт 15 01:22  .cache
+drwx------ 18 olga olga 4096 окт 15 01:22  .config
+drwxrwxr-x  4 olga olga 4096 окт 15 01:22  .java
+-rw-------  1 olga olga   20 окт 20 01:10  .lesshst
+drwx------  3 olga olga 4096 окт  8 22:40  .local
+-rw-r--r--  1 olga olga  807 окт  8 21:34  .profile
+drwx------  6 olga olga 4096 окт 15 01:22  snap
+-rw-r--r--  1 olga olga    0 окт 11 00:13  .sudo_as_admin_successful
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Видео
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Документы
+drwxr-xr-x  2 olga olga 4096 окт 10 23:58  Загрузки
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Изображения
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Музыка
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Общедоступные
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40 'Рабочий стол'
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Шаблоны
+
+3)olga@Goli-VirtualBox:~$ mkdir otusHW
+olga@Goli-VirtualBox:~$ ls -la
+итого 88
+drwxr-x--- 17 olga olga 4096 окт 20 01:14  .
+drwxr-xr-x  3 root root 4096 окт  8 21:34  ..
+drwxrwxr-x  2 olga olga 4096 окт 15 01:22  .android
+-rw-------  1 olga olga  935 окт 20 01:11  .bash_history
+-rw-r--r--  1 olga olga  220 окт  8 21:34  .bash_logout
+-rw-r--r--  1 olga olga 3771 окт  8 21:34  .bashrc
+drwx------ 17 olga olga 4096 окт 15 01:22  .cache
+drwx------ 18 olga olga 4096 окт 15 01:22  .config
+drwxrwxr-x  4 olga olga 4096 окт 15 01:22  .java
+-rw-------  1 olga olga   20 окт 20 01:10  .lesshst
+drwx------  3 olga olga 4096 окт  8 22:40  .local
+drwxrwxr-x  2 olga olga 4096 окт 20 01:14  otusHW
+-rw-r--r--  1 olga olga  807 окт  8 21:34  .profile
+drwx------  6 olga olga 4096 окт 15 01:22  snap
+-rw-r--r--  1 olga olga    0 окт 11 00:13  .sudo_as_admin_successful
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Видео
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Документы
+drwxr-xr-x  2 olga olga 4096 окт 10 23:58  Загрузки
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Изображения
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Музыка
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Общедоступные
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40 'Рабочий стол'
+drwxr-xr-x  2 olga olga 4096 окт  8 22:40  Шаблоны
+4)olga@Goli-VirtualBox:~$ cd otusHW
+
+5)lga@Goli-VirtualBox:~/otusHW$ df -h
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+tmpfs            393M         1,6M  391M            1% /run
+/dev/sda3         20G          13G  6,2G           67% /
+tmpfs            2,0G            0  2,0G            0% /dev/shm
+tmpfs            5,0M         4,0K  5,0M            1% /run/lock
+/dev/sda2        512M         5,3M  507M            2% /boot/efi
+tmpfs            393M         4,7M  388M            2% /run/user/1000
+
+6)olga@Goli-VirtualBox:~/otusHW$ df -h 1>fsInfo
+7)olga@Goli-VirtualBox:~/otusHW$ cat fsInfo
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+tmpfs            393M         1,6M  391M            1% /run
+/dev/sda3         20G          13G  6,2G           67% /
+tmpfs            2,0G            0  2,0G            0% /dev/shm
+tmpfs            5,0M         4,0K  5,0M            1% /run/lock
+/dev/sda2        512M         5,3M  507M            2% /boot/efi
+tmpfs            393M         4,7M  388M            2% /run/user/1000
+olga@Goli-VirtualBox:~/otusHW$
+
+8)olga@Goli-VirtualBox:~/otusHW$ cat fsInfo | grep -E '1|2'
+tmpfs            393M         1,6M  391M            1% /run
+/dev/sda3         20G          13G  6,2G           67% /
+tmpfs            2,0G            0  2,0G            0% /dev/shm
+tmpfs            5,0M         4,0K  5,0M            1% /run/lock
+/dev/sda2        512M         5,3M  507M            2% /boot/efi
+tmpfs            393M         4,7M  388M            2% /run/user/1000
+
+olga@Goli-VirtualBox:~/otusHW$ cat fsInfo | egrep  '1|2'
+tmpfs            393M         1,6M  391M            1% /run
+/dev/sda3         20G          13G  6,2G           67% /
+tmpfs            2,0G            0  2,0G            0% /dev/shm
+tmpfs            5,0M         4,0K  5,0M            1% /run/lock
+/dev/sda2        512M         5,3M  507M            2% /boot/efi
+tmpfs            393M         4,7M  388M            2% /run/user/1000
+
+9)olga@Goli-VirtualBox:~/otusHW$ cp fsInfo fsInfoCopy
+lga@Goli-VirtualBox:~/otusHW$ ls
+fsInfo  fsInfoCopy
+
+10)olga@Goli-VirtualBox:~/otusHW$ cp fsInfo fsInfoCopy2
+olga@Goli-VirtualBox:~/otusHW$ ls
+fsInfo  fsInfoCopy  fsInfoCopy2
+
+11)olga@Goli-VirtualBox:~/otusHW$ mv fsInfoCopy2 fsInfoCopy3
+olga@Goli-VirtualBox:~/otusHW$ ls
+fsInfo  fsInfoCopy  fsInfoCopy3
+
+12)lga@Goli-VirtualBox:~/otusHW$ rm fsInfoCopy3
+olga@Goli-VirtualBox:~/otusHW$ ls
+fsInfo  fsInfoCopy
+
+13)olga@Goli-VirtualBox:~/otusHW$ head -3 fsInfoCopy
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+tmpfs            393M         1,6M  391M            1% /run
+/dev/sda3         20G          13G  6,2G           67% /
+olga@Goli-VirtualBox:~/otusHW$ head fsInfoCopy
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+tmpfs            393M         1,6M  391M            1% /run
+/dev/sda3         20G          13G  6,2G           67% /
+tmpfs            2,0G            0  2,0G            0% /dev/shm
+tmpfs            5,0M         4,0K  5,0M            1% /run/lock
+/dev/sda2        512M         5,3M  507M            2% /boot/efi
+tmpfs            393M         4,7M  388M            2% /run/user/1000
+
+14)olga@Goli-VirtualBox:~/otusHW$ tail fsInfoCopy
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+tmpfs            393M         1,6M  391M            1% /run
+/dev/sda3         20G          13G  6,2G           67% /
+tmpfs            2,0G            0  2,0G            0% /dev/shm
+tmpfs            5,0M         4,0K  5,0M            1% /run/lock
+/dev/sda2        512M         5,3M  507M            2% /boot/efi
+tmpfs            393M         4,7M  388M            2% /run/user/1000
+olga@Goli-VirtualBox:~/otusHW$ tail -2 fsInfoCopy
+/dev/sda2        512M         5,3M  507M            2% /boot/efi
+tmpfs            393M         4,7M  388M            2% /run/user/1000
+
+15) lga@Goli-VirtualBox:~/otusHW$ touch runIt
+olga@Goli-VirtualBox:~/otusHW$ ls
+olga@Goli-VirtualBox:~/otusHW$ ls
+fsInfo  fsInfoCopy  runIt
+
+16) vi runIt
+17) i
+cat fsInfo 1>fsInfoFinal
+:wq
+
+18)olga@Goli-VirtualBox:~/otusHW$ ls -la runIt
+-rw-rw-r-- 1 olga olga 30 окт 20 14:21 runIt
+olga@Goli-VirtualBox:~/otusHW$ chmod u+x runIt
+lga@Goli-VirtualBox:~/otusHW$ ls -la runIt
+-rwxrw-r-- 1 olga olga 30 окт 20 14:21 runIt
+
+19)olga@Goli-VirtualBox:~/otusHW$ ls
+fsInfo  fsInfoCopy  runIt
+olga@Goli-VirtualBox:~/otusHW$ ./runIt
+olga@Goli-VirtualBox:~/otusHW$ ls
+fsInfo  fsInfoCopy  fsInfoFinal  runIt
+olga@Goli-VirtualBox:~/otusHW$ cat fsInfoFinal
+Файл.система   Размер Использовано  Дост Использовано% Cмонтировано в
+tmpfs            393M         1,6M  391M            1% /run
+/dev/sda3         20G          13G  6,2G           67% /
+tmpfs            2,0G            0  2,0G            0% /dev/shm
+tmpfs            5,0M         4,0K  5,0M            1% /run/lock
+/dev/sda2        512M         5,3M  507M            2% /boot/efi
+tmpfs            393M         4,7M  388M            2% /run/user/1000
