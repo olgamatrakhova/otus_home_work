@@ -1,31 +1,35 @@
 package ru.otus.homework.java.hw3;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.lang.Integer;
 
 public class TestSystem {
-    public static final String[][][] QUESTION = {
+    public static final Object[][][] QUESTION =
             {
-                    {"Какое животное обитает только в Китае"},
-                    {"Коала", "Верблюд", "Панда", "Слон", "Носорог"},
-                    {"3"}
-            },
-            {
-                    {"Чем питаются колибри"},
-                    {"Нектаром и мелкими насекомыми", "Мелкой рыбой", "Семенами трав", "Лягушками"},
-                    {"1"}
-            },
-            {
-                    {"Как называются молодые рога марала, изюбря и пятнистого оленя"},
-                    {"Пуанты", "Пенаты", "Панты"},
-                    {"3"}
-            },
-            {
-                    {"Какая наука изучает ископаемых животных"},
-                    {"Сейсмология", "Орнитология", "Психология", "Палеонтология", "Геология", "География"},
-                    {"4"}
-            }
-    };
+                    {
+                            {"Какое животное обитает только в Китае"},
+                            {"Коала", "Верблюд", "Панда", "Слон", "Носорог"},
+                            {3}
+                    },
+                    {
+                            {"Чем питаются колибри"},
+                            {"Нектаром и мелкими насекомыми", "Мелкой рыбой", "Семенами трав", "Лягушками"},
+                            {1}
+                    },
+                    {
+                            {"Как называются молодые рога марала, изюбря и пятнистого оленя"},
+                            {"Пуанты", "Пенаты", "Панты"},
+                            {3}
+                    },
+                    {
+                            {"Какая наука изучает ископаемых животных"},
+                            {"Сейсмология", "Орнитология", "Психология", "Палеонтология", "Геология", "География"},
+                            {4}
+                    }
+            };
     public static String INPUT_NO_NUMBER_ERROR = "К ответу принимаются только цифры!";
     public static String INPUT_ANSWER_MSG = "Введите ваш ответ:";
     public static String INPUT_NUMBER_ANSWER_MSG = "Введите цифту от 1 до ";
@@ -40,7 +44,7 @@ public class TestSystem {
     public static String FALSE_MSG = "Не верно!";
 
     public static void main(String[] args) {
-        String inputAnswer;
+        int inputAnswer;
         int cntTrueAnswer = 0;
         Scanner inputStr = new Scanner(System.in);
         System.out.println(HELLO_MSG);
@@ -50,25 +54,25 @@ public class TestSystem {
                 System.out.println("  " + (j + 1) + ") " + QUESTION[i][1][j]);
             }
             System.out.println(INPUT_ANSWER_MSG);
-            inputAnswer = inputStr.nextLine();
             boolean trueAns = false;
             while (!trueAns) {
                 try {
+                    inputAnswer = inputStr.nextInt();
                     System.out.println("Ваш ответ: " + inputAnswer);
-                    if (Integer.parseInt(inputAnswer) != 0 && Integer.parseInt(inputAnswer) <= QUESTION[i][1].length) {
+                    if (inputAnswer != 0 && inputAnswer <= QUESTION[i][1].length) {
                         trueAns = true;
                         if (QUESTION[i][2][0].equals(inputAnswer)) {
                             System.out.println(TRUE_MSG + "\n");
                             cntTrueAnswer++;
                         } else System.out.println(FALSE_MSG + "\n");
-
                     } else {
                         System.err.println(INPUT_NUMBER_ERROR_MSG + "\n" + INPUT_NUMBER_ANSWER_MSG + QUESTION[i][1].length + ".\n" + INPUT_ANSWER_MSG);
-                        inputAnswer = inputStr.nextLine();
+                        trueAns = false;
                     }
-                } catch (NumberFormatException e) {
+                } catch (Exception e) {
                     System.err.println(INPUT_NO_NUMBER_ERROR + "\n" + INPUT_NUMBER_ANSWER_MSG + QUESTION[i][1].length + ".\n" + INPUT_ANSWER_MSG);
-                    inputAnswer = inputStr.nextLine();
+                    trueAns = false;
+                    inputStr.next();
                 }
             }
         }
