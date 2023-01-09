@@ -1,0 +1,175 @@
+<!--
+Поле для ввода имени студента
+Поле для выбора даты рождения
+Выпадающий список для выбора пола (возможные значения: мужчина; женщина)
+Кнопка "Добавить" для добавления указанный в элементах форм данных в таблицу
+Колонки таблицы:
+Имя студента
+Пол
+Дата рождения
+Возраст
+После строк с данными о студентах, с отступом в одну пустую строк, в таблице должна идти строка содержащая две ячейки:
+Ячейку с текстом "Средний возраст студентов"
+Ячейку с рассчитанным по таблице средним возрастом студентов
+Написать скрипт, срабатывающий при нажатии на кнопку "Добавить".
+Он должен расчитать возраст студента на основании даты рождения и добавить строку с данными студента в таблицу.
+После добавления строки должен пересчитаться и быть выведен в соответствующую ячейку средний возраст по всем стуентам в таблице.
+Результат верстки страницы должен быть максимально, визуально приблизижен к изображению аналогичной страницы, приложенного к заданию (в примерах к вебинару).
+-->
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Форма добавления информации о студентах</title>
+
+    <script>
+        function insertRow() {
+            let stTable = document.getElementById('stTable');
+            let total = document.getElementById('total');
+            let tr = document.createElement('tr');
+
+            let fio = document.getElementById('fio').value;
+            let sex = document.getElementById('sex').value;
+            let dateBirth = document.getElementById('dateBirth').value;
+
+            let now = new Date();
+            let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            let dtBirth = new Date(dateBirth);
+            let dtBirthNow = new Date(today.getFullYear(), dtBirth.getMonth(), dtBirth.getDate());
+            let age;
+            age = today.getFullYear() - dtBirth.getFullYear();
+            if (today < dtBirthNow) {
+                age = age - 1;
+            }
+
+            tr.innerHTML = '<td>' + fio + '</td><td>' + sex + '</td><td>' + dateBirth + '</td><td>' + age + '</td>';
+            stTable.children[0].appendChild(tr);
+
+            let summ = 0;
+            let table = document.getElementById('stTable');
+
+            for (let i = 1, row; row = table.rows[i]; i++) {
+                if (i > table.rows.length - 3) {
+                    break;
+                } else {
+					summ = summ + Number(row.cells[3].innerHTML);
+                };
+            }
+            total.innerHTML = summ / (table.rows.length - 3);
+        }
+    </script>
+    <style>             
+        .st-tb {
+            border: 1px solid steelblue;
+            width: 700px;
+            border-collapse: collapse;
+            margin-bottom: 300px;
+        }
+        
+        .st-tb tr td {
+            border: 1px solid steelblue;
+        }
+        
+        .st-tb-c1 {
+            width: 300px;
+        }
+        
+        .st-tb-c2 {
+            width: 150px;
+        }
+        
+        .st-tb-c3 {
+            width: 150px;
+        }
+        
+        .st-tb-c4 {
+            width: 100px;
+        }        
+        .forma {
+            border: 1px solid steelblue;
+            width: 600px;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }        
+        label {
+            width: 200px;
+            display: inline-block;
+        }
+		
+    </style>
+
+</head>
+
+<body>
+    <h3>
+    Форма добавления информации о студенте 
+	<br>
+</h3>
+
+    <h4>	
+
+	<form border = "1" action="insertRow()" method = "POST">
+	<table class="forma" cellpadding = 4">
+      
+	<tr>
+        <td>
+        <label for = "fio">Имя студента:</label>
+        <input id = "fio" name = "fio" type = "text" style="width: 300px;" value = "Василий Семнов">
+	</td>
+        </tr>
+		
+    <tr>
+        <td>
+        <label for = "dateBirth">Дата рождения:</label>
+        <input id = "dateBirth" name = "dateBirth" type = "date" value = "2005-01-01" style="width: 300px;">
+	</td>
+        </tr>
+    <tr>
+        <td>
+        <label>Пoл:</label> 
+            <select name = "sex" id = "sex" style="width: 300px;">
+                <option value = "мужчина" selected>мужской</option>
+                <option value = "женщина">женский</option>
+            </select>
+        </label>    
+	</td>
+        </tr>
+		<tr>
+        <td>
+    <input type="button" value="Добавить" onclick="insertRow()" />
+	</td>
+        </tr>
+</table>
+</form>
+</h4>
+
+    <h3>Таблица студентов</h3>
+    <table class="st-tb" id="stTable">
+        <thead>
+            <tr>
+                <td class="st-tb-c1">Имя студента</td>
+                <td class="st-tb-c2">Пол</td>
+                <td class="st-tb-c3">Дата рождения</td>
+                <td class="st-tb-c4">Возраст</td>
+
+            </tr>
+        </thead>
+        <thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+				
+                <tr>
+                    <td colspan="3"> Средний возраст студентов</td>
+                    <td  id="total"></td>
+                </tr>
+            </tbody>
+
+    </table>
+
+
+</body>
+
+</html>
